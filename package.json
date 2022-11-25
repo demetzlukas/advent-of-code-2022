@@ -1,0 +1,25 @@
+{
+  "name": "aoc-2022",
+  "version": "1.0.0",
+  "description": "Advent of Code 2022",
+  "main": "./bin/index.js",
+  "scripts": {
+    "build:js": "tsc",
+    "run:js": "tsc && node ./bin/index.js",
+    "run": "ts-node ./src/index.ts",
+    "debug": "tsc && node --inspect=9229 ./bin/index.js"
+  },
+  "keywords": [
+    "aoc",
+    "typescript"
+  ],
+  "author": "Lukas Demetz",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^4.9.3"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.9",
+    "ts-node": "^10.9.1"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "incremental": true,
+    "target": "es2016",
+    "module": "commonjs",
+    "sourceMap": true,
+    "outDir": "./bin",
+    "removeComments": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true
+  },
+  "include": ["./src/**/*.ts"]
+}
