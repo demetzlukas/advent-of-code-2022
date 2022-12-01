@@ -9,7 +9,7 @@ export async function main() {
     .map((calories) =>
       calories
         .split('\r\n')
-        .map((l) => parseInt(l))
+        .map(Number)
         .reduce((sum, current) => sum + current)
     )
     .sort((a, b) => b - a);
