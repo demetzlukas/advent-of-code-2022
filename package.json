@@ -16,9 +16,11 @@
   "author": "Lukas Demetz",
   "license": "ISC",
   "dependencies": {
+    "lodash": "^4.17.21",
     "typescript": "^4.9.3"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.191",
     "@types/node": "^18.11.9",
     "ts-node": "^10.9.1"
   }
