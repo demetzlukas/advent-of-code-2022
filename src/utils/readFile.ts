@@ -1,9 +1,22 @@
 import { readFile } from 'fs/promises';
 
-export async function readFileFromInput(input: string): Promise<string> {
+export async function readFileFromInput(
+  input: string,
+  trim = true
+): Promise<string> {
   let content = await readFile(input, 'utf-8');
 
-  return content.trim();
+  if (trim) {
+    return content.trim();
+  }
+
+  return content;
+}
+
+export async function readFileFromInput2(input: string): Promise<string> {
+  let content = await readFile(input, 'utf-8');
+
+  return content;
 }
 
 export async function readLinesFromInput(
