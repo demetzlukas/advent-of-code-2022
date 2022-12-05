@@ -1,5 +1,6 @@
 import { readFileFromInput } from '../utils/readFile';
-import { cloneDeep } from 'lodash';
+import { cloneDeep, remove } from 'lodash';
+import { removeListener } from 'process';
 
 const filename = './input/5.txt';
 
@@ -18,9 +19,7 @@ export async function main() {
   let stacks = cloneDeep(startingStacks);
 
   moves.forEach(([howMany, from, to]) => {
-    for (let index = 0; index < howMany; index++) {
-      stacks[to - 1].push(stacks[from - 1].pop());
-    }
+    moveElements(stacks, from, to, howMany, true);
   });
 
   console.log(
@@ -30,8 +29,7 @@ export async function main() {
 
   stacks = cloneDeep(startingStacks);
   moves.forEach(([howMany, from, to]) => {
-    stacks[to - 1].push(...stacks[from - 1].slice(-1 * howMany));
-    stacks[from - 1] = stacks[from - 1].slice(0, -1 * howMany);
+    moveElements(stacks, from, to, howMany);
   });
 
   console.log(
@@ -56,4 +54,19 @@ function initStacks(layout: string[]) {
   });
 
   return stacks;
+}
+
+function moveElements(
+  stacks: string[][],
+  from: number,
+  to: number,
+  howMany: number,
+  reverse = false
+) {
+  let removed = stacks[from - 1].splice(-1 * howMany);
+
+  if (reverse) {
+    removed = removed.reverse();
+  }
+  stacks[to - 1].push(...removed);
 }
