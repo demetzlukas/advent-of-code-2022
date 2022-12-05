@@ -1,6 +1,5 @@
 import { readFileFromInput } from '../utils/readFile';
 import { cloneDeep, remove } from 'lodash';
-import { removeListener } from 'process';
 
 const filename = './input/5.txt';
 
@@ -63,7 +62,7 @@ function moveElements(
   howMany: number,
   reverse = false
 ) {
-  let removed = stacks[from - 1].splice(-1 * howMany);
+  let removed = stacks[from - 1].splice(howMany * -1);
 
   if (reverse) {
     removed = removed.reverse();
