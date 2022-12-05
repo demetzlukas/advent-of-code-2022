@@ -42,18 +42,18 @@ export async function main() {
 
 function initStacks(layout: string[]) {
   const stacks: string[][] = Array.from({ length: 9 }, () => []);
-  let numberOfStack = 0;
+  let stackIndex = 0;
 
-  for (const line of layout) {
+  layout.forEach((line) => {
     for (let index = 1; index < line.length; index += 4) {
       const element = line[index];
       if (element !== ' ') {
-        stacks[numberOfStack].unshift(element);
+        stacks[stackIndex].unshift(element);
       }
-      numberOfStack++;
+      stackIndex++;
     }
-    numberOfStack = 0;
-  }
+    stackIndex = 0;
+  });
 
   return stacks;
 }
