@@ -13,12 +13,6 @@ export async function readFileFromInput(
   return content;
 }
 
-export async function readFileFromInput2(input: string): Promise<string> {
-  let content = await readFile(input, 'utf-8');
-
-  return content;
-}
-
 export async function readLinesFromInput(
   input: string,
   lineEnd = '\r\n'
