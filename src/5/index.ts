@@ -1,5 +1,5 @@
 import { readFileFromInput } from '../utils/readFile';
-import { cloneDeep, remove } from 'lodash';
+import { cloneDeep } from 'lodash';
 
 const filename = './input/5.txt';
 
