@@ -14,8 +14,6 @@ function findFirstUniqueLetters(
 ): number {
   let chars = new Set(string.slice(0, numberOfUniqueLetters));
   for (let index = numberOfUniqueLetters; index < string.length; index++) {
-    const element = string[index];
-
     if (chars.size == numberOfUniqueLetters) {
       return index - 1;
     }
