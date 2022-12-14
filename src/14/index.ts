@@ -15,13 +15,12 @@ export async function main() {
 
   blocks = getBlocks(input);
   lowest += 2;
-  // add bounds
-  addBounds(blocks);
+  addBottom(blocks);
 
   console.log('Part 2:', getNumberOfSand(blocks));
 }
 
-function addBounds(blocks: Map<string, string>) {
+function addBottom(blocks: Map<string, string>) {
   const [min, max] = getHorizontalBounds(blocks);
   for (let i = min - 1000; i < max + 1000; i++) {
     blocks.set(`${i}x${lowest}`, '#');
@@ -59,20 +58,27 @@ function getLowest(blocks: Map<string, string>): number {
 }
 function placeSand(blocks: Map<string, string>): [number, number] {
   let [x, y] = [500, 0];
+  let stop = true;
+  const directions = [
+    [0, 1],
+    [-1, 1],
+    [1, 1],
+  ];
 
   while (true) {
+    stop = true;
     if (y >= lowest) {
       return [-1, -1];
     }
-    if (!blocks.has(`${x}x${y + 1}`)) {
-      y += 1;
-    } else if (!blocks.has(`${x - 1}x${y + 1}`)) {
-      x += -1;
-      y += 1;
-    } else if (!blocks.has(`${x + 1}x${y + 1}`)) {
-      x += 1;
-      y += 1;
-    } else {
+    for (const [dx, dy] of directions) {
+      if (!blocks.has(`${x + dx}x${y + dy}`)) {
+        x += dx;
+        y += dy;
+        stop = false;
+        break;
+      }
+    }
+    if (stop) {
       return [x, y];
     }
   }
