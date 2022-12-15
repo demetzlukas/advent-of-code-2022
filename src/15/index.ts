@@ -1,4 +1,3 @@
-import { isConstructorDeclaration } from 'typescript';
 import { readLinesFromInput } from '../utils/readFile';
 
 const filename = './input/15.txt';
