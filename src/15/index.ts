@@ -29,7 +29,46 @@ export async function main() {
 
   console.log('Part 1:', sum);
 
-  console.log('Part 2:');
+  for (const [sx, sy, distance] of sender) {
+    let outerX = sx + distance + 1;
+    let outerY = sy;
+    let found = false;
+
+    for (const [dx, dy] of [
+      [-1, 1],
+      [-1, -1],
+      [1, -1],
+      [1, 1],
+    ]) {
+      let counter = 0;
+      while (counter++ < distance + 2) {
+        if (
+          outerX + dx < 0 ||
+          outerX + dy > 4000000 ||
+          outerY + dy < 0 ||
+          outerY + dy > 4000000 ||
+          sender.some(
+            ([x, y, d]) =>
+              getManhattanDistance([x, y], [outerX + dx, outerY + dy]) <= d
+          )
+        ) {
+          outerX += dx;
+          outerY += dy;
+          continue;
+        } else {
+          console.log('Part 2:', (outerX + dx) * 4000000 + outerY + dy);
+          found = true;
+          break;
+        }
+      }
+      if (found) {
+        break;
+      }
+    }
+    if (found) {
+      break;
+    }
+  }
 }
 
 function getManhattanDistance(
