@@ -33,10 +33,8 @@ function decimalToSNAFU(number: number): string {
   let carry = 0;
   while (number > 0) {
     const remainder = number % 5;
-    // console.log(number);
     carry = 0;
     if (remainder < 3) {
-      number += carry;
       result = remainder + result;
     } else {
       result = (remainder === 3 ? '=' : '-') + result;
